@@ -1,0 +1,3 @@
+import numpy as np
+
+print(np.corrcoef(data['year'],data['rm']))
