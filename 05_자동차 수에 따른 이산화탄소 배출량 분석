@@ -5,9 +5,10 @@ import matplotlib.pyplot as plt
 
 data= pd.read_csv('(D)전 세계 co2 배출량.csv',encoding='utf-8')
 df=data[data['Entity']=='South Korea']
-k=df[df['Year']>1964]
-y=k['Annual CO2 emissions']
-data2=pd.read_csv('(M)대한민국의 자동차 등록 현황(1966_).csv',encoding='utf-8')
+k=df[df['Year']>1965]
+y=k['Annual CO2 emissions']
+data2=pd.read_csv('(M)대한민국의 자동차 등록 현황(1966_).csv',encoding='utf-8')
+data2=data2[data2['year']<2019]
 X=data2['rm'].values.reshape(-1,1)
 
 l=LinearRegression()
