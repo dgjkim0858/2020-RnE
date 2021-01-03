@@ -1,0 +1,21 @@
+import pandas as pd
+from sklearn.linear_model import LinearRegression
+import numpy as np
+import matplotlib.pyplot as plt
+
+data= pd.read_csv('(F)전 세계 화석연료 사용량.csv',encoding='utf-8')
+df=data[data['Entity']=='South Korea']
+k=df[df['Year']>1965]
+y=k['Fossil Fuels (TWh)']
+data2=pd.read_csv('(M)대한민국의 자동차 등록 현황(1966_).csv',encoding='utf-8')
+X=data2['rm'].values.reshape(-1,1)
+
+l=LinearRegression()
+l.fit(X,y)
+print('%f X + %f'%(l.coef_,l.intercept_))
+
+plt.scatter(X,y)
+plt.plot(X, l.predict(X), 'r')
+plt.xlabel('number of cars')
+plt.ylabel('fossil fuels')
+plt.show()
