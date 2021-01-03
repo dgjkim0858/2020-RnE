@@ -1,0 +1,18 @@
+import pandas as pd
+from sklearn.linear_model import LinearRegression
+import numpy as np
+import matplotlib.pyplot as plt
+
+data=pd.read_csv('(M)대한민국의 자동차 등록 현황(1966_).csv',encoding='utf-8')
+X=data['year'].values.reshape(-1,1)
+y=data['rm']
+
+l=LinearRegression()
+l.fit(X,y)
+print('%f X + %f'%(l.coef_,l.intercept_)) #l.coef_ 기울기 l.intercept_ y절편
+
+plt.scatter(X,y)
+plt.plot(X,l.predict(X), 'r')  
+plt.xlabel('year')
+plt.ylabel('number of cars')
+plt.show()
