@@ -1,0 +1,9 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+data=pd.read_csv('(M)대한민국의 자동차 등록 현황(1966_).csv',encoding='utf-8')
+
+plt.scatter(data['year'], data['rm'])
+plt.xlabel('year')
+plt.ylabel('number of cars')
+plt.show()
