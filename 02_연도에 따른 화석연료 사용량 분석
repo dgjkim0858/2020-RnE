@@ -1,0 +1,19 @@
+import pandas as pd
+from sklearn.linear_model import LinearRegression
+import numpy as np
+import matplotlib.pyplot as plt
+
+data= pd.read_csv('(F)전 세계 화석연료 사용량.csv',encoding='utf-8')
+df=data[data['Entity']=='South Korea']
+X=df['Year'].values.reshape(-1,1)
+y=df['Fossil Fuels (TWh)']
+
+l=LinearRegression()
+l.fit(X, y)
+print('%f X + %f'%(l.coef_,l.intercept_))
+
+plt.scatter(X,y)
+plt.plot(X,l.predict(X), 'r')
+plt.xlabel('year')
+plt.ylabel('fossil fuels')
+plt.show()
